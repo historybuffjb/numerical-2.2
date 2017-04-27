@@ -3,6 +3,7 @@ from setuptools import setup
 setup(
     name='Project Numerical',
     install_requires=[
+        'numpy',
         'scipy',
         'mpmath',
         'sympy',
