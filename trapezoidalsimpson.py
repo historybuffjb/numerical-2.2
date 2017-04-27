@@ -21,11 +21,11 @@ def newtonTrapezoidal(f,a,b,n):
     plt.plot(array, 'k--', label="Trapezoidal")
     plt.legend(loc='best')
 
-    print('Trapezoidal result: ' + str(part1+h*trapezoidalSum))
+    print('Trapezoidal result: ' + str(round(part1+h*trapezoidalSum,8)))
 
     h = (b - a) / n
     c = derivative(f, float(a + b) / 2, n=2)
-    error = (((b - a) ** 2) * (h ** 2) * c) / 25
+    error = round((((b - a) ** 2) * (h ** 2) * c) / 25,8)
 
     print('Trapezoidal error: ' + str(error))
 
@@ -48,7 +48,7 @@ def newtonSimpson(f, a, b, n):
             
         sum2 *= 2
         approx = (b - a)/(3.0*n)*(f(a) + f(b) + sum1 + sum2)
-        print ('Simpson result: ' + str(approx))
+        print ('Simpson result: ' + str(round(approx,8)))
 
         actual = integrate.quad(f, 0, 1)[0]
         error = round(abs(actual - approx), 8)

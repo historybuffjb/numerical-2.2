@@ -18,8 +18,7 @@ from nonlinearleastsquares import nonLinearLeastSquares
 from differencemethods import differenceMethods
 from extrapolation import extrapolation
 #from autodiff import autoDiff
-from trapezoidalsimpson import newtonTrapezoidal
-from trapezoidalsimpson import newtonSimpson
+from trapezoidalsimpson import newtTrapSimp
 from romberg1 import romberg
 from adaptive import adaptive
 from gaussian import gaussian
@@ -29,8 +28,7 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 categories = ['Chebyshev', 'Cubic Splines', 'Bezier', 'Linear Least Squares', 'Nonlinear Least Squares',
-              'Difference Methods', 'Extrapolation', 'Automatic Differentiation', 'Newton-Cotes: Trapezoidal',
-            'Newton-Cotes: Simpson', 'Romberg', 'Adaptive', 'Gaussian']
+              'Difference Methods', 'Extrapolation', 'Automatic Differentiation', 'Newton-Cotes', 'Romberg', 'Adaptive', 'Gaussian']
 
 
 def callback(tex, input):
@@ -125,18 +123,18 @@ def setInput(tex, category):
                            ''
                            ''
                            '')
-    elif category == 'Newton-Cotes: Trapezoidal':
-        inputText.set('newtonTrapezoidal(lambda x: x**2, 0, 1, 10)')
+    elif category == 'Newton-Cotes':
+        inputText.set('newtTrapSimp(lambda x: x**2, 0, 1, 10)')
         tex.insert(tk.END, 'Takes a function, a and b intervals, and an n value in that order. '
-                           'Calculates the best guess for the Newton-Cotes Trapezoidal result value, and plots the '
+                           'Calculates the best guess for the Newton-Cotes Trapezoidal/Newton-Cotes Simpson result value, and plots the '
                            'graph below.\n\n'
-                           'Example usage: newtonTrapezoidal(lambda x: x**2, 0, 1, 10)')
-    elif category == 'Newton-Cotes: Simpson':
-        inputText.set('newtonSimpson(lambda x: x**2, 0, 1, 10)')
+                           'Example usage: newtTrapSimp(lambda x: x**2, 0, 1, 10)')
+    elif category == 'Newton-Cotes':
+        inputText.set('newtTrapSimp(lambda x: x**2, 0, 1, 10)')
         tex.insert(tk.END, 'Takes a function, a and b intervals, and an n value in that order. '
-                           'Calculates the best guess for the Newton-Cotes Simpson result value, and plots the '
+                           'Calculates the best guess for the Newton-Cotes Trapezoidal/Newton-Cotes Simpson result value, and plots the '
                            'graph below.\n\n'
-                           'Example usage: newtonSimpson(lambda x: x**2, 0, 1, 10)')
+                           'Example usage: newtTrapSimp(lambda x: x**2, 0, 1, 10)')
     elif category == 'Romberg':
         inputText.set('romberg(math.sin, 0, 2, 10)')
         tex.insert(tk.END, 'Takes a function, a and b interval values, and n value in that order. '
@@ -187,7 +185,7 @@ def close():
 
 bop = tk.Frame(width=200)
 bop.pack(side=tk.LEFT, fill='y', pady=(8, 8), padx=(8, 8))
-for k in range(0, 13):
+for k in range(0, 12):
     tv = categories[k]
     b = tk.Button(bop, text=tv, command=lambda tv=tv: setInput(tex, tv))
     b.pack(fill="x", pady=(2, 2))
