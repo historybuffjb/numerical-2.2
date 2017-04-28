@@ -25,7 +25,7 @@ def bezier_curve(points, nTimes=1000):
                  [2,3],
                  [4,5], ..[Xn, Yn] ]
         However, we aware that the function takes in input as they come. So, if the points
-        are not ordered correctly, you will get incorrect results. 
+        are not ordered correctly, you will get incorrect results.
         Should be: [ [x1,y1],
                      [x2,y2],
                      ........[xn,yn] ]
@@ -143,14 +143,14 @@ def bezier(user_input, n=4):
         print('Sorry, you have not entered correct input\n')
         return -1
 
-
-def main():
-    # nPoints = 4
-    # points = np.random.rand(nPoints,2)*200
-    nPoints = 4
-    #bezier([[1,0,6,2],[1,-1,0,1],[1,1,6,0]], 4)
-    bezier([(1,0),(2,0),(0,3),(0,1)],4)
-
-
-if __name__ == '__main__':
-    main()
+#
+# def main():
+#     # nPoints = 4
+#     # points = np.random.rand(nPoints,2)*200
+#     nPoints = 4
+#     #bezier([[1,0,6,2],[1,-1,0,1],[1,1,6,0]], 4)
+#     bezier([(1,0),(2,0),(0,3),(0,1)],4)
+#
+#
+# if __name__ == '__main__':
+#     main()

@@ -1,9 +1,10 @@
 from scipy.optimize import *
 from scipy.linalg import *
+from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
 
-def gaussNewton(c, radii, initial):
+def nonLinearLeastSquares(c, radii, initial):
     try:
         # Initialize variables
         A = []
@@ -23,6 +24,8 @@ def gaussNewton(c, radii, initial):
         print("The RMSE error is: "+ str(round(RMSE, 8)))
         return x
     except:
+        e = sys.exc_info()[0]
+        write_to_page("<p>Error: %s</p>" % e)
         print("I'm sorry, you have entered an invalid input!")
         return -1
 
@@ -35,7 +38,8 @@ def rFunc(c, radii, initial):
     return r
 
 
-def jacob(c, initial, *func):
+
+def jacob(c, initial):
     A = []
     s = []
     for i in range(len(c)):
@@ -45,24 +49,11 @@ def jacob(c, initial, *func):
         A.append([topX/s[i], topY/s[i]])
     return A
 
-def levenMarquardt(func, c, initial, lamb):
-    # try:
-    params = Parameters()
-    params.add(initial[0])
-    params.add(initial[1])
-    params.add(initial[2])
-    result = minimize(func,params)
-    print(result)
-    # except Exception as e:
-    #     print(e)
-    #     print("I'm sorry, you have entered an invalid input!")
-    #     return -1
 
-#gaussNewton([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])
-#levenMarquardt(lambda c1,c2,c3,t: c1*np.exp(-c2*(t-c3)**2), [[1,3],[2,5],[2,7],[3,5],[4,1]], [1,1,1,1], 50)
-def nonLinearLeastSquares(func,params):
 
-    return 0
+nonLinearLeastSquares([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])
+
+
 
 #
 # def main():
@@ -75,31 +66,3 @@ def nonLinearLeastSquares(func,params):
 #
 # if __name__ == '__main__':
 #   main()
-#
-# import numpy as np
-# import matplotlib.pyplot as plt
-# from scipy.optimize import curve_fit
-#
-# def func(x, a, b, c):
-#     return a * np.exp(-b * x) + c
-#
-#
-# xdata = np.linspace(0, 4, 50)
-# y = func(xdata, 2.5, 1.3, 0.5)
-# y_noise = 0.2 * np.random.normal(size=xdata.size)
-# ydata = y + y_noise
-# plt.plot(xdata, ydata, 'b-', label='data')
-#
-# popt, pcov = curve_fit(func, xdata, ydata)
-# print(popt)
-# print(pcov)
-# plt.plot(xdata, func(xdata, *popt), 'r-', label='fit')
-#
-#
-# popt, pcov = curve_fit(func, xdata, ydata, bounds=(0, [3., 2., 1.]))
-# plt.plot(xdata, func(xdata, *popt), 'g--', label='fit-with-bounds')
-#
-# plt.xlabel('x')
-# plt.ylabel('y')
-# plt.legend()
-# plt.show()
