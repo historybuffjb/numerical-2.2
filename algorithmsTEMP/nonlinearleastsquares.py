@@ -1,7 +1,6 @@
 from scipy.optimize import *
 from scipy.linalg import *
 import numpy as np
-from lmfit import *
 import matplotlib.pyplot as plt
 
 def gaussNewton(c, radii, initial):
