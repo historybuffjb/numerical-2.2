@@ -9,20 +9,20 @@ import traceback
 import math
 from math import sqrt
 from sympy import ln
-from algorithms.chebyshev import chebyshev
-from algorithms.cubicsplines import cubicSpline
-from algorithms.leastSquares import leastSquares
-from algorithms.bezier import bezier
-from algorithms.nonlinearleastsquares import nonLinearLeastSquares
-from algorithms.differencemethods import differenceMethods
-from algorithms.extrapolation import extrapolation
-from algorithms.autodiff import autoDiff
-from algorithms.trapezoidalsimpson import newtTrapSimp
-from algorithms.romberg1 import romberg
-from algorithms.adaptive import adaptive
-from algorithms.gaussian import gaussian
-from algorithms.trapezoidalsimpson import newtonTrapezoidal
-from algorithms.trapezoidalsimpson import newtonSimpson
+from Algorithms.chebyshev import chebyshev
+from Algorithms.cubicsplines import cubicSpline
+from Algorithms.leastSquares import leastSquares
+from Algorithms.bezier import bezier
+from Algorithms.nonlinearleastsquares import nonLinearLeastSquares
+from Algorithms.differencemethods import differenceMethods
+from Algorithms.extrapolation import extrapolation
+from Algorithms.autodiff import autoDiff
+from Algorithms.trapezoidalsimpson import newtTrapSimp
+from Algorithms.romberg1 import romberg
+from Algorithms.adaptive import adaptive
+from Algorithms.gaussian import gaussian
+from Algorithms.trapezoidalsimpson import newtonTrapezoidal
+from Algorithms.trapezoidalsimpson import newtonSimpson
 from numpy import sin, cos, tan, log
 
 import matplotlib.pyplot as plt
@@ -87,7 +87,7 @@ def setInput(tex, category):
                             'points = string of coordinate points; resolution affects how smooth the plot is\n\n'
                             'Prints the cubic spline functions and displays an interpolated line plot below.\n'
                             'Example usage: cubicSpline(\'(-1,3), (0,5), (3,1), (4,1), (5,1)\')\n'
-                            'or cubicSpline(\'(-1,3), (0,5), (3,1), (4,1), (5,1)\', resolution=2) for a ' 
+                            'or cubicSpline(\'(-1,3), (0,5), (3,1), (4,1), (5,1)\', resolution=2) for a '
                             'low resolution graph.')
     elif category == 'Bezier':
         inputText.set('bezier([[1,0,6,2],[1,-1,0,1],[1,1,6,0]])')
@@ -108,11 +108,15 @@ def setInput(tex, category):
                             'If an A and B matrix is provided, it will output the coefficient, residual, and rank.\n\n'
                             'Example usage: leastSquares([[1, 1], [1, -1], [1, 1]], [2, 1, 3], 3)')
     elif category == 'Nonlinear Least Squares':
-        inputText.set('Not yet implemented')
-        tex.insert(tk.END, ''
-                           ''
-                           ''
-                           '')
+        inputText.set('nonLinearLeastSquares([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])')
+        tex.insert(tk.END, 'nonLinearLeastSquares(points [array], radii [array], initial[array])\n'
+                           'points = series of points in the form [[-1,0],[1,1/2],[1,-1/2]]\n'
+                           'radii = array of the radius lengths of each circle in the form [1,1/2,1/2]\n'
+                           'initial = set of points for your initial guess in the form [0,0]\n'
+                           'It will take in the above values, ALL OF WHICH ARE REQUIRED, and will output\n'
+                           'the best fit points, the standard error, and the root mean squared error RMSE\n'
+                           'No graph outputting on this one as it is just a series of points\n'
+                           )
     elif category == 'Difference Methods':
         inputText.set('Not yet implemented')
         tex.insert(tk.END, ''

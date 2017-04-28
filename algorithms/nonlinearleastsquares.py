@@ -4,6 +4,13 @@ from sympy import *
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+
+# be aware that this will only do
+# gauss-newton with circles and radii
+# due to technical limitations we were unable
+# to implement Levenberg Marquardt and so
+# it is not included with this project
 def nonLinearLeastSquares(c, radii, initial):
     try:
         # Initialize variables
@@ -51,7 +58,7 @@ def jacob(c, initial):
 
 
 
-nonLinearLeastSquares([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])
+#nonLinearLeastSquares([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])
 
 
 
