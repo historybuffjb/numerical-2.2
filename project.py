@@ -9,20 +9,20 @@ import traceback
 import math
 from math import sqrt
 from sympy import ln
-from algorithmsTEMP.chebyshev import chebyshev
-from algorithmsTEMP.cubicsplines import cubicSpline
-from algorithmsTEMP.leastSquares import leastSquares
-from algorithmsTEMP.bezier import bezier
-from algorithmsTEMP.nonlinearleastsquares import nonLinearLeastSquares
-from algorithmsTEMP.differencemethods import differenceMethods
-from algorithmsTEMP.extrapolation import extrapolation
-from algorithmsTEMP.autodiff import autoDiff
-from algorithmsTEMP.trapezoidalsimpson import newtTrapSimp
-from algorithmsTEMP.romberg1 import romberg
-from algorithmsTEMP.adaptive import adaptive
-from algorithmsTEMP.gaussian import gaussian
-from algorithmsTEMP.trapezoidalsimpson import newtonTrapezoidal
-from algorithmsTEMP.trapezoidalsimpson import newtonSimpson
+from algorithms.chebyshev import chebyshev
+from algorithms.cubicsplines import cubicSpline
+from algorithms.leastSquares import leastSquares
+from algorithms.bezier import bezier
+from algorithms.nonlinearleastsquares import nonLinearLeastSquares
+from algorithms.differencemethods import differenceMethods
+from algorithms.extrapolation import extrapolation
+from algorithms.autodiff import autoDiff
+from algorithms.trapezoidalsimpson import newtTrapSimp
+from algorithms.romberg1 import romberg
+from algorithms.adaptive import adaptive
+from algorithms.gaussian import gaussian
+from algorithms.trapezoidalsimpson import newtonTrapezoidal
+from algorithms.trapezoidalsimpson import newtonSimpson
 from numpy import sin, cos, tan, log
 
 import matplotlib.pyplot as plt
