@@ -2,7 +2,6 @@ import matplotlib
 matplotlib.use("TkAgg")
 
 import tkinter as tk
-from tkinter import messagebox
 import timeit
 import io
 import sys
@@ -10,20 +9,20 @@ import traceback
 import math
 from math import sqrt
 from sympy import ln
-from Algorithms.chebyshev import chebyshev
-from Algorithms.cubicsplines import cubicSpline
-from Algorithms.leastSquares import leastSquares
-from Algorithms.bezier import bezier
-from Algorithms.nonlinearleastsquares import nonLinearLeastSquares
-from Algorithms.differencemethods import differenceMethods
-from Algorithms.extrapolation import extrapolation
-#from autodiff import autoDiff
-from Algorithms.trapezoidalsimpson import newtTrapSimp
-from Algorithms.romberg1 import romberg
-from Algorithms.adaptive import adaptive
-from Algorithms.gaussian import gaussian
-from Algorithms.trapezoidalsimpson import newtonTrapezoidal
-from Algorithms.trapezoidalsimpson import newtonSimpson
+from algorithms.chebyshev import chebyshev
+from algorithms.cubicsplines import cubicSpline
+from algorithms.leastSquares import leastSquares
+from algorithms.bezier import bezier
+from algorithms.nonlinearleastsquares import nonLinearLeastSquares
+from algorithms.differencemethods import differenceMethods
+from algorithms.extrapolation import extrapolation
+from algorithms.autodiff import autoDiff
+from algorithms.trapezoidalsimpson import newtTrapSimp
+from algorithms.romberg1 import romberg
+from algorithms.adaptive import adaptive
+from algorithms.gaussian import gaussian
+from algorithms.trapezoidalsimpson import newtonTrapezoidal
+from algorithms.trapezoidalsimpson import newtonSimpson
 from numpy import sin, cos, tan, log
 
 import matplotlib.pyplot as plt
@@ -121,17 +120,12 @@ def setInput(tex, category):
                             'f\'(xval) along with the actual value and the error. You MUST enter a single variable function\n'
                            'Example usage: extrapolation(lambda x: -sin(x),0,2,0.01)')
     elif category == 'Automatic Differentiation':
-        inputText.set('Not yet implemented')
-        tex.insert(tk.END, ''
-                           ''
-                           ''
-                           '')
-    elif category == 'Newton-Cotes':
-        inputText.set('newtTrapSimp(lambda x: x**2, 0, 1, 10)')
-        tex.insert(tk.END, 'Takes a function, a and b intervals, and an n value in that order. '
-                           'Calculates the best guess for the Newton-Cotes Trapezoidal/Newton-Cotes Simpson result value, and plots the '
-                           'graph below.\n\n'
-                           'Example usage: newtTrapSimp(lambda x: x**2, 0, 1, 10)')
+        inputText.set('autoDiff(lambda x: x**2, \'x\')')
+        tex.insert(tk.END, 'Takes a function and calculates the derivative via automatic differentiation.\n'
+                           'Functions can be input as Pythonic lambda functions or basic sin/cos/tan et cetera.\n'
+                           'Supports up to three variables (x, y, z) in space-delimited string form: \'x y z\'\n\n'
+                           'Example usage: autoDiff(lambda x: x**2, \'x\')'
+                           '\nautoDiff(lambda x, y, z: 2 * x ** 2 + 4 * y ** 3 + 8 * z ** 4, \'x y z\')')
     elif category == 'Newton-Cotes':
         inputText.set('newtTrapSimp(lambda x: x**2, 0, 1, 10)')
         tex.insert(tk.END, 'Takes a function, a and b intervals, and an n value in that order. '

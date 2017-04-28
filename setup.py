@@ -7,7 +7,8 @@ setup(
         'scipy',
         'mpmath',
         'sympy',
-        'matplotlib'
+        'matplotlib',
+        'lmfit'
     ],
     url='https://github.com/protocol114/numerical-2.2',
     author='Johnathan Becker, Nick Duncan, David Heisler, Vu Nguyen'
