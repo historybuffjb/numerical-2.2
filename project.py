@@ -114,11 +114,12 @@ def setInput(tex, category):
                            ''
                            '')
     elif category == 'Extrapolation':
-        inputText.set('Not yet implemented')
-        tex.insert(tk.END, ''
-                           ''
-                           ''
-                           '')
+        inputText.set('extrapolation(lambda x: -sin(x),0,2,0.01)')
+        tex.insert(tk.END, 'Takes in a function in terms of x along with the xval you wish to eval f\'(xval) at\n.'
+                           'You must provide the value for n, which is the number of levels of extrapolation, and \n'
+                           'you must provide the initial stepsize h. This will return the most accurate value for \n'
+                            'f\'(xval) along with the actual value and the error. You MUST enter a single variable function\n'
+                           'Example usage: extrapolation(lambda x: -sin(x),0,2,0.01)')
     elif category == 'Automatic Differentiation':
         inputText.set('Not yet implemented')
         tex.insert(tk.END, ''
