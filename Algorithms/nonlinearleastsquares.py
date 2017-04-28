@@ -17,9 +17,7 @@ def gaussNewton(c, radii, initial):
             r = rFunc(c, radii, x)
             vk = np.linalg.solve(np.matmul(np.transpose(A),A),np.matmul(-np.transpose(A), r))
             x = x + vk
-        xValue = round(x[0],8)
-        yValue = round(x[1],8)
-        print("The final value is: " + '('+str(xValue)+','+str(yValue)+')')
+        print("The final values are: " + str((np.round(x,8))))
         err = np.sum(np.array(r)**2)
         print("The error value is: " + str(round(err,8)))
         RMSE = np.sqrt(err)/np.sqrt(len(c))
@@ -48,29 +46,21 @@ def jacob(c, initial, *func):
         A.append([topX/s[i], topY/s[i]])
     return A
 
-def levenMarquardt(c, radii, func, lamd):
+def levenMarquardt(func, c,initial,lamd):
     try:
-        # Initialize variables
-        A = []
-        r = []
-        vk = []
-        #x = initial
+        x = initial
         # Loop through until end
-        for i in range(len(c)):
-            A = jacob(c, x)
-            r = rFunc(c, radii, x)
-            vk = np.linalg.solve(np.matmul(np.transpose(A),A)+lamd*np.diag(np.transpose(A)*A),np.matmul(-np.transpose(A), r))
-            x = x + vk
-        xValue = round(x[0],8)
-        yValue = round(x[1],8)
-        print("The final value was: " + '('+str(xValue)+','+str(yValue)+')')
+        x = least_squares(func, initial, '3-point', method='lm')
+
+        print("The final values are: " + str(x))
         return x
-    except:
+    except Exception as e:
+        print(e)
         print("I'm sorry, you have entered an invalid input!")
         return -1
 
 gaussNewton([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0], )
-
+levenMarquardt(lambda x,y, z, w, t: x*np.exp(y(t))*np.cos(z+w), [[1,3],[2,5],[2,7],[3,5],[4,1]],[1,1,1],50)
 def nonLinearLeastSquares(func,params):
 
     return 0
