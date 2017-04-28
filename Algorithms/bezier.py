@@ -5,12 +5,13 @@ from scipy import interpolate
 from scipy.misc import comb
 from matplotlib import pyplot as plt
 
+global iteration
+iteration = 0
 
 def bernstein_poly(i, n, t):
     """
      The Bernstein polynomial of n, i as a function of t
     """
-
     return comb(n, i) * ( t**(n-i) ) * (1 - t)**i
 
 
@@ -36,8 +37,6 @@ def bezier_curve(points, nTimes=1000):
     xPoints = np.array([p[0] for p in points])
     yPoints = np.array([p[1] for p in points])
 
-
-
     t = np.linspace(0.0, 1.0, nTimes)
 
     polynomial_array = np.array([ bernstein_poly(i, nPoints-1, t) for i in range(0, nPoints)   ])
@@ -47,6 +46,8 @@ def bezier_curve(points, nTimes=1000):
 
     return xvals, yvals, xPoints, yPoints
 
+# You must have valid data to pass this function
+# otherwise your function will fail
 def bezier_spline(xPoints, yPoints, numPoints):
     t = symbols('t')
     if numPoints <= 3:
@@ -84,7 +85,7 @@ def bezier(user_input, n=4):
             for nr in range( len(user_input)):
                 plt.text(xPoints[nr], yPoints[nr], nr)
 
-            plt.show()
+            #plt.show()
         else:
             length = len(user_input)
             xPoints = np.array(user_input[0])
@@ -114,6 +115,7 @@ def bezier(user_input, n=4):
                 '(' + str(x4) + ',' + str(y4) + ',' + str(z4) + ')')
                 print('Control Points: (' + str(x2) + ',' + str(y2) + ',' + str(z2) + ')'+','\
                 '(' + str(x4) + ',' + str(y3) + ',' + str(z3) + ')')
+
             elif length == 2:
                 x1, y1 = xPoints[0], yPoints[0]
                 bx = xPoints[1]
@@ -136,20 +138,19 @@ def bezier(user_input, n=4):
                 print("Sorry, you can only use a maximum of 3 equations\n")
 
     except:
-        e = sys.exc_info()[0]
-        write_to_page("<p>Error: %s</p>" % e)
+        # e = sys.exc_info()[0]
+        # write_to_page("<p>Error: %s</p>" % e)
         print('Sorry, you have not entered correct input\n')
         return -1
 
 
-# def main():
-#     # nPoints = 4
-#     # points = np.random.rand(nPoints,2)*200
-#     nPoints = 4
-#     points =
-#     bezier([[1,0,6,2],[1,-1,0,1],[1,1,6,0]], 4)
-#
-#
-#
-# if __name__ == '__main__':
-#     main()
+def main():
+    # nPoints = 4
+    # points = np.random.rand(nPoints,2)*200
+    nPoints = 4
+    #bezier([[1,0,6,2],[1,-1,0,1],[1,1,6,0]], 4)
+    bezier([(1,0),(2,0),(0,3),(0,1)],4)
+
+
+if __name__ == '__main__':
+    main()

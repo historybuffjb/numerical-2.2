@@ -46,21 +46,21 @@ def jacob(c, initial, *func):
         A.append([topX/s[i], topY/s[i]])
     return A
 
-def levenMarquardt(func, c,initial,lamd):
-    try:
-        x = initial
-        # Loop through until end
-        x = least_squares(func, initial, '3-point', method='lm')
+def levenMarquardt(func, c, initial, lamb):
+    # try:
+    params = Parameters()
+    params.add(initial[0])
+    params.add(initial[1])
+    params.add(initial[2])
+    result = minimize(func,params)
+    print(result)
+    # except Exception as e:
+    #     print(e)
+    #     print("I'm sorry, you have entered an invalid input!")
+    #     return -1
 
-        print("The final values are: " + str(x))
-        return x
-    except Exception as e:
-        print(e)
-        print("I'm sorry, you have entered an invalid input!")
-        return -1
-
-gaussNewton([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0], )
-levenMarquardt(lambda x,y, z, w, t: x*np.exp(y(t))*np.cos(z+w), [[1,3],[2,5],[2,7],[3,5],[4,1]],[1,1,1],50)
+#gaussNewton([[-1,0],[1,1/2],[1,-1/2]],[1,1/2,1/2],[0,0])
+#levenMarquardt(lambda c1,c2,c3,t: c1*np.exp(-c2*(t-c3)**2), [[1,3],[2,5],[2,7],[3,5],[4,1]], [1,1,1,1], 50)
 def nonLinearLeastSquares(func,params):
 
     return 0

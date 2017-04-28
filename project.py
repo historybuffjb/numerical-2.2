@@ -10,26 +10,20 @@ import traceback
 import math
 from math import sqrt
 from sympy import ln
-from algorithms.chebyshev import chebyshev
-from algorithms.cubicsplines import cubicSpline
-from algorithms.leastSquares import leastSquares
-from algorithms.bezier import bezier
-from algorithms.nonlinearleastsquares import nonLinearLeastSquares
-from algorithms.differencemethods import differenceMethods
-from algorithms.extrapolation import extrapolation
+from Algorithms.chebyshev import chebyshev
+from Algorithms.cubicsplines import cubicSpline
+from Algorithms.leastSquares import leastSquares
+from Algorithms.bezier import bezier
+from Algorithms.nonlinearleastsquares import nonLinearLeastSquares
+from Algorithms.differencemethods import differenceMethods
+from Algorithms.extrapolation import extrapolation
 #from autodiff import autoDiff
-<<<<<<< HEAD:test.py
-from trapezoidalsimpson import newtTrapSimp
-from romberg1 import romberg
-from adaptive import adaptive
-from gaussian import gaussian
-=======
-from algorithms.trapezoidalsimpson import newtonTrapezoidal
-from algorithms.trapezoidalsimpson import newtonSimpson
-from algorithms.romberg1 import romberg
-from algorithms.adaptive import adaptive
-from algorithms.gaussian import gaussian
->>>>>>> move project algorithms to algorithms file and add documentation file:project.py
+from Algorithms.trapezoidalsimpson import newtTrapSimp
+from Algorithms.romberg1 import romberg
+from Algorithms.adaptive import adaptive
+from Algorithms.gaussian import gaussian
+from Algorithms.trapezoidalsimpson import newtonTrapezoidal
+from Algorithms.trapezoidalsimpson import newtonSimpson
 from numpy import sin, cos, tan, log
 
 import matplotlib.pyplot as plt
