@@ -32,42 +32,47 @@ def plot(Result2Point,Result3Point,Error2Point,Error3Point):
 	frame = legend.get_frame()
 	frame.set_facecolor('0.90')
 
-	plt.show()
 
-def differenceMethods(x,y,z):
-	return 0
 
-def main():
-	x = Symbol('x')
+def differenceMethods(func, x, h):
 	Result2Point= []
 	Result3Point= []
 	Error2Point = []
 	Error3Point = []
-
-	## User input 
-	func = exp(x)
-	xval = 0.0
-	h=[0.1,0.01,0.001]
-
-	start = time.time()
-	actualResult = actual_result(func, xval)
+	actualResult = actual_result(func, x)
 	for item in h:
-		Result2Point.append(two_point(func, xval, item))
-		Result3Point.append(three_point(func, xval, item))
-
+		Result2Point.append(two_point(func, x, item))
+		Result3Point.append(three_point(func, x, item))
+	print("The closest 2point point is: " + str(round(Result2Point[-1], 8)))
+	print("The closest 3point point is: " + str(round(Result3Point[-1], 8)))
 	Error2Point = np.asarray(Result2Point) - actualResult
 	Error3Point = np.asarray(Result3Point) - actualResult
-
-	end = time.time()
-	timeElapsed = end-start
-	print ("Elapsed time: %f" % timeElapsed)
-
-
+	print("The error in the closest 2point is: " + str(round(Error2Point[-1], 8)))
+	print("The error in the closest 3point is: " + str(round(Error3Point[-1], 8)))
 	plot(Result2Point, Result3Point, Error2Point, Error3Point)
-	
-	
-	#print actual_result(func, xval)
+	return 0
 
-if __name__ =='__main__':
-	main()
-	
+# def main():
+# 	differenceMethods('1/x', 2, [0.1,0.01,0.001])
+# 	#
+# 	# start = time.time()
+# 	# actualResult = actual_result(func, xval)
+# 	# for item in h:
+# 	# 	Result2Point.append(two_point(func, xval, item))
+# 	# 	Result3Point.append(three_point(func, xval, item))
+# 	#
+# 	# Error2Point = np.asarray(Result2Point) - actualResult
+# 	# Error3Point = np.asarray(Result3Point) - actualResult
+# 	#
+# 	# end = time.time()
+# 	# timeElapsed = end-start
+# 	# print ("Elapsed time: %f" % timeElapsed)
+# 	#
+# 	#
+# 	# plot(Result2Point, Result3Point, Error2Point, Error3Point)
+#
+#
+# 	#print actual_result(func, xval)
+#
+# if __name__ =='__main__':
+# 	main()

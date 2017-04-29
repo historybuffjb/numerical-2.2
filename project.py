@@ -118,11 +118,14 @@ def setInput(tex, category):
                            'No graph outputting on this one as it is just a series of points\n'
                            )
     elif category == 'Difference Methods':
-        inputText.set('Not yet implemented')
-        tex.insert(tk.END, ''
-                           ''
-                           ''
-                           '')
+        inputText.set('differenceMethods(\'1/x\', 2, [0.1,0.01,0.001])')
+        tex.insert(tk.END, 'differenceMethods(func function, x int, h [array])\n'
+                           'function: must be entered as a string. CANNOT BE ENTERED OUTSIDE string\n'
+                           'x: the point at which you are evaluating your derivative\n'
+                           'h: an array of values of initial step sizes. The one on the right is the one evaluated\n'
+                           'It will, using Two-point centered-difference and Three-point centered difference calculate\n'
+                           'with the given inputs, output the best approximation for both and the error for both.\n'
+                           'It also plots a graph\n')
     elif category == 'Extrapolation':
         inputText.set('extrapolation(lambda x: -sin(x),0,2,0.01)')
         tex.insert(tk.END, 'extrapolation(f [Function], xval [Number], n [Number], hval [Number])\n'
