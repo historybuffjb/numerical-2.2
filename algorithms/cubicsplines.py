@@ -105,7 +105,8 @@ def cubicSpline(points, resolution=100):
         # ugly but formats the formula nice
         tempFormula = re.sub(' +', ' ', tempFormula.replace('[', ' ').replace(']', ' '))
         tempString = (("S{0}(x) = " + tempFormula).format(str(i + 1)).replace('**', '^')
-                      .replace('x_val', 'x').replace('- -', '+ ').replace('x - 0', 'x'))
+                      .replace('x_val', 'x').replace('- -', '+ ').replace('x - 0.0', 'x').replace('+ -', '- ')
+                      .replace('.0 ', ' ').replace('.0)', ')').replace('(x)', 'x'))
         formulas.append(tempFormula)
         Si.append(tempString)
 

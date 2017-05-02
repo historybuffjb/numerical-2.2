@@ -42,7 +42,7 @@ def newtonTrapezoidal(f,a,b,n):
     error = round((((b - a) ** 2) * (h ** 2) * c) / 25,8)
     # output error
     print('Trapezoidal error: ' + str(error))
-    print("Traezoidal Iteration Count: " + str(iteration))
+    print("Trapezoidal Iteration Count: " + str(iteration))
 
 global iteration2
 iteration2 = 0
@@ -89,7 +89,7 @@ def newtonSimpson(f, a, b, n):
         # compute error
         error = round(abs(actual - approx), 8)
         print ('Simpson error: ' + str(error))
-        print('Traezoidal Iteration Count: ' + str(iteration2))
+        print('Trapezoidal Iteration Count: ' + str(iteration2))
 
 
 def newtTrapSimp(func, a, b, n):
